@@ -1,0 +1,35 @@
+<!--  Assume we have this content in HTML <body>
+    <body>
+    <h3> Members of my Group are </h3>
+    <ol id="list">
+    </ol>
+    </body> -->
+<!-- Also assume we have a array of person names (5 names).
+Read from array and populate the above list with member names in bullet form. -->
+
+
+<html>
+
+<head>
+    <script>
+        var memberNames = ["John", "Steve", "Ben", "Damon", "Ion"];
+
+        window.addEventListener("DOMContentLoaded", function () {
+            var list = document.getElementById("list");
+            var html = "";
+
+            for (var i = 0; i < memberNames.length; i++) {
+                html += "<li>" + memberNames[i] + "</li>";
+            }
+
+            list.innerHTML = html;
+        });
+    </script>
+</head>
+
+<body>
+    <h3>Members of my Group are</h3>
+    <ol id="list"></ol>
+</body>
+
+</html>

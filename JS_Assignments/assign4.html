@@ -1,0 +1,71 @@
+<!-- Write a function that accepts two numbers and a operator like (+,-,*, /) from user and performs the
+appropriate operation indicated by the operator. -->
+
+<html>
+    <head>
+        <script>
+            validatedata=(numid,errmsg)=>{
+                var a=document.getElementById(numid).value;
+                if(a===""||isNaN(a)){
+                    document.getElementById(errmsg).innerHTML="Please eneter valid inputs";
+                    return false;
+                } else {
+                    document.getElementById(errmsg).innerHTML=""
+                    return true;
+                }
+            }
+
+            validatenumbers=()=>{
+            flag=validatedata("n1","err1");
+            flag1=validatedata("n2","err2");
+
+            if(flag&&flag1){
+                calculatenumbers();
+            }
+        }
+           
+            calculatenumbers=()=>{
+                var a=parseInt(document.getElementById("n1").value);
+                var b=parseInt(document.getElementById("n2").value);
+                var sel=document.getElementById("operation").value;
+               // var result=0;
+
+                switch(sel){
+                    case "+":
+                        result=a+b;
+                        break;
+
+                    case "-":
+                        result=a-b;
+                        break;
+
+                    case "*":
+                        result=a*b;
+                        break;
+
+                    case "/":
+                        result=a/b;
+                        break;
+                }
+                document.getElementById("ans").value=result;
+            }
+        </script>
+    </head>
+    <body>
+       Number 1 : <input type="text" id="n1" class="n1" placeholder="enter your first number" autofocus required>
+        <span>*</span>
+        <span id="err1"></span><br><br>
+       Number 2 : <input type="text" id="n2" class="n2" placeholder="enter your second number" required>
+        <span>*</span>
+        <span id="err2"></span><br><br>
+        <select id="operation">
+            <option>----Operators----</option>
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+        </select><br><br>
+        <button type="button" id="btn" class="btn" onclick="validatenumbers()">Calculate</button><br><br>
+        ANSWER : <input type="text" id="ans" class="ans" disabled>
+    </body>
+</html>

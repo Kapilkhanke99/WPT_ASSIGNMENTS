@@ -1,0 +1,48 @@
+<!-- Create a web page to calculate the Compound Interest using the formula given below:
+Compound Interest =
+Where:
+p = Principal,
+r = Rate of Interest,
+n = period in years
+The values used in the example in the following figure are as follows:
+P = 1000, n = 1, r = 10 -->
+
+<html>
+    <head>
+        <script>
+            calcCompInt=()=>{
+    amt = parseInt(document.getElementById("amt").value)
+    time = parseInt(document.getElementById("time").value)
+    int = parseInt(document.getElementById("int").value)
+
+    compint = amt*(Math.pow((1+int/100),time))-amt 
+    compint = Math.round(compint)
+    str="Compound Interest : "+compint
+
+    document.getElementById("answer").innerHTML="<br>" + str
+}
+
+        </script>
+    </head>
+    <body> <div id="main">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Enter Amount:</td>
+                    <td><input type="text" name="amt" id="amt"></td>
+                </tr>
+                <tr>
+                    <td>Enter Duration:</td>
+                    <td><input type="text" name="time" id="time"></td>
+                </tr>
+                <tr>
+                    <td>Enter Interest:</td>
+                    <td><input type="text" name="int" id="int"></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <button type="button" id="compInt" name="compInt" onclick="calcCompInt()">Calculate Compound Interest</button>
+    </div>
+    <div id="answer"><br></div></body>
+</html>

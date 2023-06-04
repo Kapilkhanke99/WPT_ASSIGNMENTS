@@ -1,0 +1,93 @@
+<!-- Create a following web page and calculate Payment Information based on Loan Information. Validate
+Loan information textfields for numbers and Payment Information textfields should be uneditable. The
+other constraints are as follows :
+• Amount of Loan should not be more than 15 lakhs.
+• Repayment period should be between 7 yrs to 15 yrs. -->
+<html>
+    <head>
+
+        <script>
+            function computeInfo() {
+                var amount = parseFloat(document.getElementById("amt").value);
+                var interestRate = parseFloat(document.getElementById("int").value);
+                var repaymentPeriod = parseFloat(document.getElementById("time").value);
+        
+                // Validate Loan Information
+                if (isNaN(amount) || isNaN(interestRate) || isNaN(repaymentPeriod)) {
+                    alert("Please enter valid numeric values for Loan Information.");
+                    return;
+                }
+        
+                if (amount > 1500000) {
+                    alert("Amount of Loan should not be more than 15 lakhs.");
+                    return;
+                }
+        
+                if (repaymentPeriod < 7 || repaymentPeriod > 15) {
+                    alert("Repayment period should be between 7 years and 15 years.");
+                    return;
+                }
+        
+                // Compute Payment Information
+                var monthlyInterestRate = interestRate / 1200;
+                var totalPayments = repaymentPeriod * 12;
+                var monthlyPayment = (amount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -totalPayments));
+                var totalAmount = monthlyPayment * totalPayments;
+                var totalInterest = totalAmount - amount;
+        
+                // Display Payment Information
+                document.getElementById("emi").value = monthlyPayment.toFixed(2);
+                document.getElementById("total_amt").value = totalAmount.toFixed(2);
+                document.getElementById("total_int").value = totalInterest.toFixed(2);
+            }
+        </script>
+        
+    </head>
+
+    <body>
+        
+        <title><h3>Payment Calculator</h3></title>
+    
+        <fieldset>
+            <h2>Enter Loan Information</h2>
+            <hr>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Amount of the Loan (any currency):</td>
+                        <td><input type="text" name="amt" id="amt"></td>
+                    </tr>
+                    <tr>
+                        <td>Annual percentage rate of interest:</td>
+                        <td><input type="text" name="int" id="int"></td>
+                    </tr>
+                    <tr>
+                        <td>Repayment period in years:</td>
+                        <td><input type="text" name="time" id="time"></td>
+                    </tr>
+                </tbody>
+            </table><br>
+
+            <button type="button" id="btn" name="btn" onclick="computeInfo()">Compute Payment Information</button><br>
+            <br>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Your Monthly Payment will be:</td>
+                        <td><input type="text" name="emi" id="emi" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>Your Total Payment will be:</td>
+                        <td><input type="text" name="total_amt" id="total_amt" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>Your Total Interest Payment will be:</td>
+                        <td><input type="text" name="total_int" id="total_int" disabled></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+    </body>
+
+</html>

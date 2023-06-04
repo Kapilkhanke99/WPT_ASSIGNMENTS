@@ -1,0 +1,26 @@
+<!-- Write a function pow(x,y) that calculates xy. Do not use the Math predefined objet -->
+<html>
+    <head>
+        <script>
+            calc=()=>{
+                x=parseInt(document.getElementById("num").value);
+                y=parseInt(document.getElementById("pow").value);
+
+                var ans=1;
+                for(var i=1;i<=y;i++){
+                    ans=ans*x;
+                }
+                document.getElementById("answer").innerHTML=x+"to the power of "+ y+ " is "+ans;
+            }
+        </script>
+    </head>
+    <body> 
+        Enter the Number:
+        <input type="text" id="num" name="num"><br>
+        Enter the Power:
+        <input type="text" name="pow" id="pow"><br>
+        <button type="button" id="btn" name="btn" onclick="calc()">Answer</button><br>
+    </div>
+    <div id="answer"></div>
+</body>
+</html>

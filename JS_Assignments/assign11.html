@@ -1,0 +1,20 @@
+<!-- Write a function getWeekDay(date) to show the weekday in short format: ‘Mon’, ‘Tue’, ‘Wed’, ‘Thurs’,
+‘Fri’, ‘Sat’, ‘Sun’.
+Eg : let date = new Date(2012, 0, 3); // 3 Jan 2012
+alert( getWeekDay(date) ); // should output "Tue" -->
+<html>
+    <body>
+        <script>
+        displayWeekday=()=>{
+            const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+            date = new Date("2023-06-04")
+            day = weekday[date.getDay()]
+        
+            return day
+        }
+        
+        alert(displayWeekday());
+        </script>
+
+    </body>
+</html>

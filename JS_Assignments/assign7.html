@@ -1,0 +1,41 @@
+<!-- Write a program min() that takes any number of arguments and returns minimum number in the set of
+arguments. Do not use the Math predefined objet -->
+
+<html>
+    <head>
+        <script>
+        min=()=>{
+        min = arr[0]
+            for(var j=0; j<arr.length; j++){
+                if(min>arr[j]){
+                    min = arr[j]
+                }    
+            }
+        
+        str = `<br>Smallest Value in your Numbers is: ${min}`
+    
+        document.getElementById("answer").innerHTML=str
+    }
+    arr = []  //arr is made to store all the numbers
+    addNewNum=()=>{
+        num = parseInt(document.getElementById("num").value)
+        arr.push(num)
+        document.getElementById("inputs").value= arr.toString()//this method represent array values seperated with commas
+        document.getElementById("num").value=""//as soon value is pushed, input box becomes empty
+        document.getElementById("num").focus()//to focus on input box everytime
+    
+    }
+</script>
+</head>
+    <body>
+        <div id="main">
+            Enter you numbers:
+            <input type="text" name="num" id="num"><br><br>
+            Your Numbers:
+            <input type="text" name="inputs" id="inputs" disabled><br><br>
+            <button type="btn" id="add" name="add" onclick="addNewNum()">Add more numbers</button>
+            <button type="button" id="min" name="min" onclick="min()">Minimum Value in the Set</button>
+        </div>
+        <div id="answer"><br></div>
+    </body>
+</html>

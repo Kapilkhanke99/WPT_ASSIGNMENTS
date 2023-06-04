@@ -1,0 +1,24 @@
+<!-- Assume i have an array of member names. Read the array and display all member names as a string
+delimited by comma all in uppercase -->
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <div id="mydiv" style="border: 2px solid blue;width: 40%;">
+        <h4><b>Members of my group are</b></h4>
+
+    </div>
+    <script>
+        var memberNames = ["John", "Steve", "Ben", "Damon", "Ion"];
+
+        var namesString = memberNames.join(", ").toUpperCase();
+
+        document.getElementById("mydiv").innerHTML += "<br>" + namesString;
+
+    </script>
+</body>
+
+</html>

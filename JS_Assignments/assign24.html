@@ -1,0 +1,50 @@
+<!-- Create a Login.html page that accepts username and password. Following are the validationsrequired:
+• Both fields are mandatory
+• Username must be between 6 to 10 characters, all alphabetic.
+• Password should be greater than 8 characters, must contain a # and atleast one digit. -->
+<html>
+<head>
+    <title>Login</title>
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Check if both fields are filled
+            if (username === "" || password === "") {
+                alert("Both fields are mandatory.");
+                return false;
+            }
+
+            // Validate username
+            var usernameRegex = /^[a-zA-Z]{6,10}$/;
+            if (!usernameRegex.test(username)) {
+                alert("Username must be between 6 to 10 characters, all alphabetic.");
+                return false;
+            }
+
+            // Validate password
+            var passwordRegex = /^(?=.*\d)(?=.*[#])\S{8,}$/;
+            if (!passwordRegex.test(password)) {
+                alert("Password should be greater than 8 characters, must contain a '#' and at least one digit.");
+                return false;
+            }
+
+            // Form is valid, proceed with login
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Login</h1>
+    <form onsubmit="return validateForm()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!-- Write a program to find sum of digits of given five-digit number. -->
+
+<html>
+    <head>
+        <script>
+            validatedata=(numid,errmsg)=>{
+                var a=document.getElementById(numid).value;
+
+                if(a===""||isNaN(a)||a.trim().length!==5){
+                    document.getElementById(errmsg).innerHTML="The inputs are invalid";
+                    return false;    
+                } else {
+                    document.getElementById(errmsg).innerHTML="";
+                    return true;
+                }
+            }
+            validatenumber=()=>{
+                flag=validatedata("num","err");
+
+                if(flag){
+                    calculate();
+                }
+            }
+            calculate=()=>{
+                var n=parseInt(document.getElementById("num").value);
+                var sum=0;
+                while(n>0){
+                    rem=n%10;
+                    sum+=rem;
+                    n=Math.floor(n/10);
+                }
+                document.getElementById("ans").value=sum;
+                 
+            }
+        </script>
+    </head>
+    <body>
+        Number : <input type="text" id="num" class="num" autofocus required>
+        <span>*</span>
+        <span id="err"></span><br><br>
+        <button type="button" id="btn" class="btn" onclick="validatenumber()">Calculate sum</button><br><br>
+        ANSWER : <input type="text" id="ans" class="ans" disabled>
+
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Register</title>
+        <script>
+            document.getElementById('showpassword').onclick=function(){
+                if(this.checked){
+                    document.getElementById('password').type="text";
+                }else{
+                    document.getElementById('password').type="password";
+                }
+            }
+        </script>
+        <style>
+           legend,label{
+            background-color: blue;
+           }
+        </style>
+
+    </head>
+    <body  style="background-color: black;">
+        <fieldset style="border-color: blue ;">
+            <legend style="color: white;">Name and Address</legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="color: white;">SSN</td>
+                        <td><input type="text" id="ssn"><label for="ssn" style="color: white;">Fill in name and address</label></td>
+                    </tr>
+                    <tr>
+                        <td style="color: white;">Full Name</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td style="color: white;">Street and Number</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td style="color: white;">Postal Code</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td style="color: white;">City</td>
+                        <td><input type="text"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <fieldset style="border-color: blue ;">
+            <legend style="color: white;">Username and Password</legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="color: white;">Username:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td style="color: white;"><label for="password">Password:</label></td>
+                        <td><input type="password" id="password"><br>
+                            <input type="checkbox" id="showpassword"><label for="showpassword">Show Password</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <br>
+        <input type="submit" value="Register" style="background-color: blue;color: white;">
+    </body>

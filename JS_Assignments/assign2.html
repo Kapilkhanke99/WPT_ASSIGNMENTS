@@ -1,0 +1,26 @@
+<!-- Accept an integer value and a message from user and print the message that many number oftimes. -->
+
+<html>
+    <head>
+        <script>
+            Printmessage=()=>{
+                var a=parseInt(document.getElementById("int").value);
+                var b=document.getElementById("mess").value;
+                var message="";
+
+                for(var i=0;i<a;i++){
+                    message += b+"<br>";
+                }
+                document.getElementById("mydiv").innerHTML=message;
+            }
+        </script>
+    </head>
+    <body>
+        Integer : <input type="text" id="int" name="int" class="int" autofocus required><br>
+        meassage : <input type="text" id="mess" name="mess" class="mess" required><br>
+        <button type="button" id="btn" name="btn" class="btn" onclick="Printmessage()" >Print</button><br>
+        <div id="mydiv">
+
+        </div>
+    </body>
+</html>

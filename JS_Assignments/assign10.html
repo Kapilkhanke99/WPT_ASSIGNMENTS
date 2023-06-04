@@ -1,0 +1,44 @@
+<!-- Create a web page that displays the current date in the format specified as in example below. Also as per
+current time, suitable greeting should be printed.
+Today is Monday, 24 April 2000, Welcome, and Good Afternoon to You.
+Number of days left till end of year : <display> -->
+
+<html>
+    <head>
+        <script>
+ displayCurrentDate=()=>{
+
+const date = new Date();
+const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+str = "Today is "+ weekday[date.getDay()] + ", " + date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear() + ", Welcome, and "
+
+if(date.getHours() < 12){
+    str += "Good Morning to you"
+}
+
+if(date.getHours() >=12 && date.getHours() < 16){
+    str += "Good Afternoon to you"
+}
+
+if(date.getHours() >= 16 && date.getHours() < 21){
+    str += "Good Evening to you"
+}
+
+else{
+    str += "Good Night to you"
+}
+
+const endDate = new Date("2023-12-31")
+diff = Math.abs(endDate-date)
+diff = Math.ceil(diff/(1000*60*60*24))
+str += "\nNumber of Day left till end of year: " + diff
+
+return str
+}
+
+console.log(displayCurrentDate())
+        </script>
+    </head>
+    <body></body>
+</html>

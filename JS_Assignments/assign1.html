@@ -1,0 +1,63 @@
+<!-- Write a program to accept three positive numbers and output the largest of them. -->
+<html>
+    <head>
+        <script>
+
+            validatenumber=(numid,errmsg)=>{
+                var a=document.getElementById(numid).value;
+
+                if(a==="" || isNaN(a)) {
+                    document.getElementById(errmsg).innerHTML="Input is not valid";
+                    return false;
+                } else{
+                    document.getElementById(errmsg).innerHTML="";
+                    return true;
+                }
+ 
+            }
+
+            findgreatest=()=>{
+                flag1=validatenumber("n1","errn1")
+                flag2=validatenumber("n2","errn2")
+                flag3=validatenumber("n3","errn3")
+
+                if(flag1&&flag2&&flag3){
+                    calculation();
+                    
+                } else {
+                   
+                }                
+            }
+
+            calculation=()=>{
+                    var x=parseInt(document.getElementById("n1").value);
+                    var y=parseInt(document.getElementById("n2").value);
+                    var z=parseInt(document.getElementById("n3").value);
+                    if(x>y&&x>z){
+                        document.getElementById("mydiv").innerHTML=x+ "is the greatest number";
+                    }
+                    else if (y>z) {
+                        document.getElementById("mydiv").innerHTML=y+ "is the greatest number";
+                    }
+                    else {
+                        document.getElementById("mydiv").innerHTML=z+ "is the greatest number";
+                    }
+                }
+
+        </script>
+    </head>
+    <body>
+        <form>
+            Number 1 : <input type="text" id="n1" class="n1" name="n1" autofocus required><span>*</span>
+            <span id="errn1"></span><br>
+            Number 2 : <input type="text" id="n2" class="n2" name="n2" required><span>*</span>
+            <span id="errn2"></span><br>
+            Number 3 : <input type="text" id="n3" class="n3" name="n3" required><span>*</span>
+            <span id="errn3"></span><br>
+            <button type="button" id="btn" name="btn" onclick="findgreatest()" size="5">Find</button>
+            <div id="mydiv">
+
+            </div>
+        </form>
+    </body>
+</html>

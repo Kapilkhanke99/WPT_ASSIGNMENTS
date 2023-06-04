@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Details</title>
+    <script>
+        function validateForm() {
+            var employeeName = document.getElementById("employeeName").value;
+            var employeeCode = document.getElementById("employeeCode").value;
+            var designation = document.getElementById("designation").value;
+            var dateOfBirth = document.getElementById("dateOfBirth").value;
+            var email = document.getElementById("email").value;
+
+            // Check if employee name is filled and contains only alphabets
+            if (employeeName === "" || !/^[a-zA-Z]+$/.test(employeeName)) {
+                alert("Employee Name is required and must contain only alphabets.");
+                return false;
+            }
+
+            // Check if employee name length is within the maximum limit
+            if (employeeName.length > 10) {
+                alert("Employee Name should not exceed 10 characters.");
+                return false;
+            }
+
+            // Check if employee code is filled and has 4 digits
+            if (employeeCode === "" || !/^\d{4}$/.test(employeeCode)) {
+                alert("Employee Code is required and must be 4 digits.");
+                return false;
+            }
+
+            // Check if all other fields are filled
+            if (designation === "" || dateOfBirth === "" || email === "") {
+                alert("All fields are mandatory.");
+                return false;
+            }
+
+            // Check if date field contains a valid date
+            if (!isValidDate(dateOfBirth)) {
+                alert("Date of Birth is not a valid date.");
+                return false;
+            }
+
+            // All validations pass, proceed to show details
+            showDetails();
+            return true;
+        }
+
+        function isValidDate(dateString) {
+            var date = new Date(dateString);
+            return date instanceof Date && !isNaN(date);
+        }
+
+        function showDetails() {
+            var employeeName = document.getElementById("employeeName").value;
+            var employeeCode = document.getElementById("employeeCode").value;
+            var designation = document.getElementById("designation").value;
+            var dateOfBirth = document.getElementById("dateOfBirth").value;
+            var email = document.getElementById("email").value;
+
+            var details = {
+                "Employee Name": employeeName,
+                "Employee Code": employeeCode,
+                "Designation": designation,
+                "Date of Birth": dateOfBirth,
+                "Email": email
+            };
+
+            // Open a new window and display details
+            var newWindow = window.open("", "_blank");
+            newWindow.document.write("<pre>" + JSON.stringify(details, null, 4) + "</pre>");
+
+            // Send email to manager's email address
+            var managerEmail = "your.manager@example.com";
+            var subject = "Employee Details Sanctioning";
+            var body = "Please review and sanction the following employee details:\n\n" + JSON.stringify(details, null, 4);
+            var emailLink = "mailto:" + managerEmail + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+
+            // Redirect to email link
+            window.location.href = emailLink;
+        }
+    </script>
+</head>
+<body>
+    <h1>Employee Details</h1>
+    <form onsubmit="return validateForm()">
+        <table border="1" style="background-color: palevioletred;">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id="name"></td>
+            </tr>
+            <tr>
+                <td>Employee code</td>
+                <td><input type="number" size="5" id="code"></td>
+            </tr>
+            <tr>
+                <td>Department</td>
+                <td>
+                    <input type="radio" id="admin" name="dept">ADMIN<br>
+                    <input type="radio" id="hr" name="dept">HR<br>
+                    <input type="radio" id="technical" name="dept">TECHNICAL<br>
+                    <input type="radio" id="accounts" name="dept">ACCOUNTS                    
+                </td>
+            </tr>
+            <tr>
+                <td>Date of Joining</td>
+                <td>
+                    <input type="text" id="dd" size="3">/
+                    <input type="text" id="mm" size="3">/
+                    <input type="text" id="yyyy" size="3"><br>
+                    <label for="dd" >dd</label>
+                    <label for="mm">mm</label>
+                    <label for="yyyy">yyyy</label>             
+                </td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><textarea id="add"></textarea></td>
+            </tr>
+            <tr>
+                <td>Training Programs Attended</td>
+                <td><input type="checkbox" id="html" name="prog">HTML/DHTML<br>
+                <input type="checkbox" id="java" name="prog">JAVA<br>
+                <input type="checkbox" id="client" name="prog">CLIENT/SERVER<br>
+                <input type="checkbox" id="net" name="prog">.NET</td>
+            </tr>
+            <tr>
+                <td>Training Programs Attended</td>
+                <td>
+                    <select size="2">
+                        <option>JAVASCRIPT</option>
+                        <option>JSTRUTS</option>
+                    </select>
+            </td>
+            </tr>
+            <tr>
+                <td>Send the information at</td>
+                <td><a href="ioy">empinfo@patni.com</a></td>
+            </tr>
+        </table>
+
+        <input type="submit" value="Show details">
+    </form>
+</body>
+</html>

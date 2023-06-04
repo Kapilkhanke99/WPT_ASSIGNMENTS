@@ -1,0 +1,112 @@
+<!-- Create the HTML form given below. Use JS to manipulate strings. Display the output below the button
+• 1st radio button : search the given sub string (second text box) in main string (first text box)
+• 2nd & 3rd radio button: convert one of the strings to upper/lower case
+• 4th radio button : trim spaces around first string
+• 5th radio button : concatenate strings in first and 2nd text boxes
+• 6th radio button : do as shown -->
+<html>
+    <head>
+        <script>
+            function search() {
+                if (str.includes(sub_str)) {
+                    //document.getElementById("answer").innerHTML = "<br>" + "Sub-string found";
+                    var pat=document.getElementById("sub_string").value;
+                    var pattern=new RegExp(pat,"gi");
+                    document.getElementById("answer").innerHTML="<br>"+str.match(pattern);
+                } else {
+                    document.getElementById("answer").innerHTML = "<br>" + "Sub-string not found";
+                }
+            }
+
+            function upperCase() {
+                var ans = str.toUpperCase();
+                document.getElementById("answer").innerHTML = "<br>" + ans;
+            }
+
+            function lowerCase() {
+                var ans = str.toLowerCase();
+                document.getElementById("answer").innerHTML = "<br>" + ans;
+            }
+
+            function trim() {
+                var ans = str.trim();
+                document.getElementById("answer").innerHTML = "<br>" + ans;
+            }
+
+            function concat() {
+                var ans = str.concat(sub_str);
+                document.getElementById("answer").innerHTML = "<br>" + ans;
+            }
+
+            function replace() {
+                str = ep_str;
+                document.getElementById("main_string").value = str;
+                document.getElementById("answer").innerHTML = "<br>" + str;
+            }
+
+            function operate() {
+                str = document.getElementById("main_string").value;
+                sub_str = document.getElementById("sub_string").value;
+                ep_str = document.getElementById("rep_string").value;
+
+                var op = document.querySelector('input[name="operations"]:checked').value;
+
+                switch (op) {
+                    case "search":
+                        search();
+                        break;
+
+                    case "upper_case":
+                        upperCase();
+                        break;
+
+                    case "lower_case":
+                        lowerCase();
+                        break;
+
+                    case "trim":
+                        trim();
+                        break;
+
+                    case "concat":
+                        concat();
+                        break;
+
+                    case "replace":
+                        replace();
+                        break;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="main">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Enter String</td>
+                        <td><input type="text" name="main_string" id="main_string"></td>
+                    </tr>
+                    <tr>
+                        <td>Enter Sub String</td>
+                        <td><input type="text" name="sub_string" id="sub_string"></td>
+                    </tr>
+                    <tr>
+                        <td>Replace with String</td>
+                        <td><input type="text" name="rep_string" id="rep_string"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <input type="radio" id="search" name="operations" value="search"><label for="search">Search Sub-string in main String</label><br>
+            <input type="radio" id="upper_case" name="operations" value="upper_case"><label for="upper_case">To Upper-Case</label><br>
+            <input type="radio" id="lower_case" name="operations" value="lower_case"><label for="lower_case">To Lower-Case</label><br>
+            <input type="radio" id="trim" name="operations" value="trim"><label for="trim">Trim Spaces</label><br>
+            <input type="radio" id="concat" name="operations" value="concat"><label for="concat">Concatenate</label><br>
+            <input type="radio" id="replace" name="operations" value="replace"><label for="replace">Replace</label><br>
+            <br>
+            <button type="button" id="btn" name="btn" onclick="operate()">Operate</button>
+        </div>
+        <div id="answer"></div>
+    </body>
+</html>

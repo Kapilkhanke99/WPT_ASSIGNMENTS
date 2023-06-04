@@ -1,0 +1,46 @@
+<!-- Write a program to print the multiplication table of a given number up to 10 multiples. Eg for number 2,
+output should be like -->
+
+<html>
+    <head>
+        <script>
+            validatedata=(numid,errmsg)=>{
+                var a=document.getElementById(numid).value;
+
+                if(a===""||isNaN(a)){
+                    document.getElementById(errmsg).innerHTML="The number is not valid";
+                    return false;
+                } else {
+                    document.getElementById(errmsg).innerHTML="";
+                    return true;
+                }
+            }
+                validatenumbers=()=>{
+                    flag=validatedata("num","err");
+
+                    if(flag){
+                        calculatetable();
+                    }
+                }
+            
+            calculatetable=()=>{
+                var n=parseInt(document.getElementById("num").value);
+                var ans="";
+
+                for(var i=1;i<=10;i++){
+                    ans += n+"*"+i+"="+n*i+"<br>";
+                }
+                document.getElementById("mydiv").innerHTML=ans;
+            }
+        </script>
+    </head>
+    <body>
+        Number : <input type="text" id="num" name="num" placeholder="your number" required autofocus>
+        <span>*</span>
+        <span id="err"></span><br><br>
+        <button type="button" id="btn" onclick="validatenumbers()">show Table</button><br><br>
+        <div id="mydiv">
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,122 @@
+<!-- Create a HTML page that will display the following form and on clicking the button, the details will be
+listed as shown. Also create an object with all details from form, show them in new window thru the
+newly created object. Replace with HTML5 elements wherever possible.
+The following requirements must be met:
+• Name: Required, only alphabets allowed, maximum length is 10.
+• Lucky number: Required, must be of 4 digits.
+• All other fields are mandatory -->
+
+<html>
+
+<head>
+    <style>
+        table{
+
+            border-style: solid;
+            border-color: #5F8CC2;
+            padding: 5px;
+        }
+        #spn {
+            position: relative;
+            left: 150px;
+        }
+
+        #spn1 {
+            position: absolute;
+            left: 32.9%;
+            top: 19.35%;
+        }
+        #ln{
+            position: absolute;
+            top: 19.35%;
+        }
+        #btn{
+            width: 60%;
+            box-shadow: 1px 1px 1px black;
+        }
+    </style>
+    <script>
+        function popualateDay() {
+            let str = ""
+            for (var i = 1; i <= 31; i++) {
+                str = str + `<option value="d${i}">${i}</option><br>`
+                document.getElementById("date").innerHTML = str;
+            }
+        }
+        function populateYear() {
+            let str = ""
+            for (var i = 1800; i <= 2023; i++) {
+                str = str + `<option value="d${i}">${i}</option><br>`
+                document.getElementById("year").innerHTML = str;
+            }
+        }
+        populate = () => {
+            popualateDay()
+            populateYear()
+        }
+    </script>
+
+</head>
+
+<body onload="populate()">
+    <table width="50%">
+        <tr>
+            <td id="tds">Name :</td>
+            <td><input type="text" name="name" id="name"></td>
+        </tr>
+        <tr>
+            <td id="tds">Birth Date : </td>
+            <td><select name="month" id="month">
+                    <option value="jan">January</option>
+                    <option value="fab">Febuary</option>
+                    <option value="mar">March</option>
+                    <option value="apr">April</option>
+                    <option value="may">May</option>
+                    <option value="june">June</option>
+                    <option value="july">July</option>
+                    <option value="aug">August</option>
+                    <option value="sept">September</option>
+                    <option value="oct">October</option>
+                    <option value="nov">November</option>
+                    <option value="dec">December</option>
+                </select>
+                <select name="date" id="date"></select>
+                <select name="year" id="year"></select>
+            </td>
+        </tr>
+        <tr>
+            <td id="tds"> E-Mail : </td>
+            <td><input type="email" name="email" id="email"><span id="spn">(Use format company@gmail.com)</span></td>
+        </tr>
+        <tr>
+            <td id="tds">Gender : </td>
+            <td>
+                <input type="radio" name="rdo" id="male"><label for="rdo" id="m">Male</label><br>
+                <input type="radio" name="rdo" id="female"><label for="rdo" id="fm">FeMale</label>
+            </td>
+        </tr>
+        <tr>
+            <td id="tds">Luckey Number : </td>
+            <td><input type="text" name="ln" id="ln"><span id="spn1">(A number between 1-100)</span><br><br></td>
+        </tr>
+        <tr>
+            <td>Favorite Foods : </td>
+            <td><input type="checkbox" name="ckh" id="pizza"><label for="chk">Pizza</label>
+                <br>
+                <input type="checkbox" name="ckh" id="Pasta"><label for="chk">Pasta</label>
+                <br>
+                <input type="checkbox" name="ckh" id="Chinese"><label for="chk">Chinese</label>
+            </td>
+        </tr>
+
+        <tr>
+            <td> <button type="button" name="btn" id="btn" onclick="dispDetails()">Send Data</button>
+    </table>
+    </td>
+    </tr>
+
+
+
+</body>
+
+</html>

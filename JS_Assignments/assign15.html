@@ -1,0 +1,28 @@
+<!-- An array contains a set of 5 words. Write Javascript to reverse each word and arrange the resulting words
+in alphabetical order. Make use of array functions -->
+<html>
+
+<body>
+    <script>
+        var words = [
+            "apple", "mango", "banana", "orange", "grapes"
+        ]
+
+        for (var i = 0; i < words.length; i++) {
+            var splitWord = words[i].split("")
+            var reverseWord = splitWord.reverse()
+            var finallWord = reverseWord.join("")
+            //The join() method in JavaScript is used to join all elements of an array into a single string.
+            words[i] = finallWord
+        }
+
+        words.sort();
+
+        for (let i = 0; i < words.length; i++) {
+            console.log(words[i])
+        }
+
+    </script>
+</body>
+
+</html>

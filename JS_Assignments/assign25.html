@@ -1,0 +1,88 @@
+<!-- Create a HTML page that accepts order details:
+
+Following are validations required:
+• All fields are mandatory
+• Cust name must be greater than 5 characters.
+• Billing date must be lesser than shipping date
+If all goes well, display as follows; On clicking the display button, all form information must be saved into an
+Order object. The details of this object must be displayed in a new window in a neat tabular fashion(hint : use
+window.open()) -->
+
+<html>
+    <head>
+        <script>
+            function dispDetails(){
+
+                var flag=false;
+                var flag1=false;
+                var a=validName()
+                var b=dateValidation()
+                if(a){
+                    flag=true;
+                    document.getElementById("spn").innerHTML=""
+                }else{
+                    flag=false;
+                    document.getElementById("spn").innerHTML="Cust name must be greater than 5 characters."
+                }
+                if(b){
+                    flag1=true;
+                    document.getElementById("spn1").innerHTML=""
+                }else{
+                    flag1=false;
+                    document.getElementById("spn1").innerHTML="Billing date must be lesser than shipping date"
+                }
+                if(flag1 && flag){
+                    var id=parseInt(document.getElementById("id").value);
+                    var name=document.getElementById("name").value;
+                    var billDate = document.getElementById("dt").value;
+                    var shipDate = document.getElementById("sdt").value;
+                    var orderTot=document.getElementById("total").value;
+                    order = {ordId:id,name:name,billingDt:billDate,shipping:shipDate,total:orderTot};
+                    document.getElementById("mydiv").innerHTML=`
+                    Order Id : ${order.ordId}<br>
+                    Name : ${order["name"]}<br>
+                    BILLING DATE : ${order["billingDt"]}<br>
+                    Shipping Date : ${order["shipping"]}<br>
+                    Order total : $${order["total"]}<br>
+                    `;
+                }
+               // BILLING DATE : ${order[billingDt]}<br>
+               //Shipping Date : ${order[shipping]}<br>
+            }
+            function validName(){
+                var nm=document.getElementById("name").value;
+                if(nm.length>5){
+                    return true;
+                }
+                return false;
+            }
+            function dateValidation(){
+                dt1=document.getElementById("dt").value;
+                dt2=document.getElementById("sdt").value;
+                if(dt1<dt2){
+                    return true;
+                }
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+        
+        <div>
+            Order ID : <input type="text" name="id" id="id">
+            <br><br>
+            Cust name : <input type="text" name="name" id="name"><span id="spn"></span>
+            <br><br>
+            Enter Billing date : <input type="date" id="dt" name="dt">
+            <br><br>
+            Enter Shipping date : <input type="date" id="sdt" name="sdt"><span id="spn1"></span>
+            <br><br>
+            Order total : <input type="text" name="total" id="total">
+            <br><br>
+            <button type="button" name="btn" id="btn" onclick="dispDetails()">display</button>
+        </div>
+        <br>
+        <div id="mydiv"></div>
+
+    </body>
+</html>
